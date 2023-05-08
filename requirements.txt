@@ -3,8 +3,9 @@ numpy
 lime
 streamlit
 matplotlib
-jinja
+jinja2
 click
 eli5
 shap
 seaborn
+PDPbox
