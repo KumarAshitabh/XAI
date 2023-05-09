@@ -15,8 +15,6 @@ import random
 import numpy as np
 from io import StringIO
 
-import nltk
-import sklearn
 
 def plot_shap_values(len_x, train_x, test_x, ML_model):
 
