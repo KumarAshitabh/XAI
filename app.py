@@ -6,7 +6,6 @@ from explain import pdplot, shapValue, lime_explain
 from remove import remove_files
 import pandas as pd
 
-#matlplot lib used to do graph functions
 import matplotlib.pyplot as plt
 
 import os
