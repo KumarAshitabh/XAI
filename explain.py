@@ -5,7 +5,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from eli5.sklearn import PermutationImportance
-from pdpbox import pdp, get_dataset, info_plots
 import eli5
 import shap
 import pickle
@@ -36,24 +35,6 @@ def perm_import(
 
     if return_importances == True:
         return importances
-
-
-# Partial dependeny plot
-
-def pdplot(
-    model,
-    X_val,
-    feat,
-    image_name='img_pdplot.png',
-    ):
-    ml_model = pickle.load(open(model, 'rb'))
-    feat_names = X_val.columns.tolist()
-    pdp_assign = pdp.pdp_isolate(model=ml_model, dataset=X_val,
-                                 model_features=feat_names,
-                                 feature=feat)
-    pdp.pdp_plot(pdp_assign, feat)
-    plt.show()
-    plt.savefig(image_name)
 
 
 def shapValue(

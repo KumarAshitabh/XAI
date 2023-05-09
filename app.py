@@ -2,10 +2,8 @@
 # -*- coding: utf-8 -*-
 import streamlit as st
 
-!pip install --force-reinstall --no-deps PDPbox
-
 import streamlit.components.v1 as components
-from explain import pdplot, shapValue, lime_explain
+from explain import  shapValue, lime_explain
 from remove import remove_files
 import pandas as pd
 
@@ -16,13 +14,6 @@ import stat
 import random 
 import numpy as np
 from io import StringIO
-
-
-def read_txt_and_pdplot(feature, test_X, ML_model):
-                    feat_selected = st.selectbox('select feature',
-                            feature)
-                    pdplot(ML_model, test_X, feat_selected)
-                    st.image('img_pdplot.png',width=500)
 
 
 
@@ -133,8 +124,6 @@ def main():
                 file = f.readlines()
             contents = [feature.strip() for feature in file]
 
-            st.write("## Partial dependency")
-            read_txt_and_pdplot(feature=contents, test_X=X_test, ML_model='Classification/model')
 
             st.write("## SHAP")
             plot_shap_values_for_all(len_x=X_len, train_x=X_train, test_x=X_test, ML_model='Classification/model')
@@ -232,16 +221,10 @@ def main():
                 score = st.sidebar.selectbox('Select Classification score metric',
                                         classification_score)
 
-                radio_option = ['None', 'Partial Density Plot','Lime', 'Shap Values', 'All']
+                radio_option = ['None', 'Lime', 'Shap Values', 'All']
                 selected_explain = st.radio('Choose page:', radio_option)
 
-                if selected_explain == 'Partial Density Plot':
-
-                    # If feature.txt is uploaded, perform pdp
-                    # Read feature txt file and plot pdplot.
-
-                    read_txt_and_pdplot(feature=feat_col, test_X=X_test, ML_model='model2')
-                elif selected_explain == 'Shap Values':
+                if selected_explain == 'Shap Values':
 
                 # Compute and plot Shap value
 
@@ -259,12 +242,6 @@ def main():
                 elif selected_explain == 'All':
 
                 # Display all plot
-
-                    # Read feature txt file and plot pdplot.
-
-                    st.write("## Partial dependency")
-
-                    read_txt_and_pdplot(feature=feat_col, test_X=X_test, ML_model='model2')
 
                     # Plot shap values
 
@@ -299,18 +276,7 @@ def main():
                                 'Partial Density Plot', 'All']
                 selected_explain = st.radio('Choose page:', radio_option)
 
-                if selected_explain == 'Partial Density Plot':
-
-                    read_txt_and_pdplot(feature=feat_col, test_X=X_test, ML_model='model2')
-                elif selected_explain == 'All':
-
-                    # Read feature txt file and plot pdplot.
-
-                    read_txt_and_pdplot(feature=feat_col, test_X=X_test, ML_model='model2')
-                    
-                else:
-
-                    st.write('')
+               
 
             done_explaining = st.button('Done')
 
