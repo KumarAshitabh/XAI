@@ -1,6 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import streamlit as st
+
+!pip install --force-reinstall --no-deps PDPbox
+
 import streamlit.components.v1 as components
 from explain import pdplot, shapValue, lime_explain
 from remove import remove_files
