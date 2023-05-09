@@ -12,8 +12,7 @@ import lime
 import lime.lime_tabular
 import os
 import streamlit as st
-from bokeh.plotting import figure, show
-from bokeh.models import ColumnDataSource
+
 
 def perm_import(
     model,
