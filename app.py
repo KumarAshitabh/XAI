@@ -70,7 +70,7 @@ def main():
     
     #removing files already uploaded
     remove_files()
-
+    X_len = 0;
     st.set_page_config(layout='wide', page_icon="🚀",
                    page_title='XAI')
     
@@ -96,7 +96,7 @@ def main():
 
     # Option to select different view of the app
 
-    if option == 'Explain':
+    if (option == 'Explain')  :
 
         st.sidebar.markdown(html_txt1, unsafe_allow_html=True)
 
@@ -227,8 +227,8 @@ def main():
                 if selected_explain == 'Shap Values':
 
                 # Compute and plot Shap value
-
-                    plot_shap_values(len_x=X_len, train_x=X_train, test_x=X_test, ML_model='model2')
+                    if X_len!=0:
+                        plot_shap_values(len_x=X_len, train_x=X_train, test_x=X_test, ML_model='model2')
                 
                 elif selected_explain == 'Lime':
 
@@ -247,7 +247,8 @@ def main():
 
                     st.write("## SHAP Value")
 
-                    plot_shap_values_for_all(len_x=X_len, train_x=X_train, test_x=X_test, ML_model='model2')
+                    if X_len!=0 :
+                        plot_shap_values_for_all(len_x=X_len, train_x=X_train, test_x=X_test, ML_model='model2')
 
                     # plot Lime
 
