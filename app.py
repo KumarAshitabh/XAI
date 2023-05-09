@@ -15,7 +15,11 @@ import random
 import numpy as np
 from io import StringIO
 
+import nltk
+import sklearn
 
+print('The nltk version is {}.'.format(nltk.__version__))
+print('The scikit-learn version is {}.'.format(sklearn.__version__))
 
 def plot_shap_values(len_x, train_x, test_x, ML_model):
 
